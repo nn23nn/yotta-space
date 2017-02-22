@@ -17,7 +17,8 @@
                         array(
                           "text" => "课程列表",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "添加课程",
@@ -26,24 +27,28 @@
                             array(
                               "text" => "文章",
                               "url" => "",
-                              "sub_menu" => array()
+                              "sub_menu" => array(),
+                              "permission" => ''
                             ),
                             array(
                               "text" => "影片",
                               "url" => "",
-                              "sub_menu" => array()
+                              "sub_menu" => array(),
+                              "permission" => ''
                             )
                           )
                         ),
                         array(
                           "text" => "修改课程",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "删除课程",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                       )
                     ),
@@ -55,22 +60,26 @@
                         array(
                           "text" => "教师列表",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "添加教师",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "修改教师",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "删除教师",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         )
                       )
                     ),
@@ -82,22 +91,26 @@
                         array(
                           "text" => "活动列表",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "添加活动",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "修改活动",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "删除活动",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         )
                       )
                     ),
@@ -110,42 +123,50 @@
                         array(
                           "text" => "首页",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "课程",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "教师",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "课后活动",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "课后聊",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "个人中心",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "关于我们",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "联系我们",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         )
                       )
                     ),
@@ -157,17 +178,20 @@
                         array(
                           "text" => "会员列表",
                           "url" => "/admin/member",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "添加会员",
                           "url" => "/admin/member/create",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "资金管理",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         )
                       )
                     ),
@@ -179,22 +203,26 @@
                         array(
                           "text" => "管理员列表",
                           "url" => "/admin/system/user",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => 'LIST_ADMIN'
                         ),
                         array(
                           "text" => "角色管理",
                           "url" => "/admin/system/role",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "权限管理",
                           "url" => "/admin/system/permission",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         ),
                         array(
                           "text" => "管理员日志",
                           "url" => "",
-                          "sub_menu" => array()
+                          "sub_menu" => array(),
+                          "permission" => ''
                         )
                       )
                     )
@@ -220,7 +248,11 @@
                                                 <?php foreach($first["sub_menu"] as $second){?>
                                                   <li>
                                                     <?php if(!$second["sub_menu"]){?>
+                                                    @if(!empty($second["permission"]) && !Entrust::can([$second["permission"]]))
+                                                      <a href="###"><i class="fa fa-caret-right"></i><span>无权限显示该菜单</span></a>
+                                                    @else
                                                       <a href="<?php echo $second['url'];?>"><i class="fa fa-caret-right"></i><span><?php echo $second["text"];?></span></a>
+                                                    @endif
                                                     <?php }else{?>
                                                       <a role="button" tabindex="0"><i class="fa fa-caret-right"></i> <span><?php echo $second["text"];?></span></a>
                                                       <ul>
