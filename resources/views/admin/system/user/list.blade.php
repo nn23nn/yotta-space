@@ -67,13 +67,19 @@
 	                                            <td>{{$user->updated_at}}</td>
 	                                            <td class="actions">
 	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/user/edit/{{$user->id}}">更改</a>
-	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/user/destroy/{{$user->id}}">删除</a>
+	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/user/destroy/{{$user->id}}"  onclick="if(!confirm('确定要删除吗?')){return false;}">删除</a>
 	                                            </td>
 	                                        </tr>
 	                                        @endforeach
 	                                    </tbody>
 									</table>
 								</div>
+							</div>
+							<div class="form-horizontal form-group col-xs-6 text-right">
+								<div class="text-center dataTables_paginate pull-right">
+									{!! with(new App\Presenter\JQTablePresenter($users))->render() !!}
+								</div>
+								<label class="control-label no-padding-right">显示 {{ $users->firstItem() }} 到 {{ $users->lastItem() }} 共 {{ $users->total() }} 条</label>
 							</div>
 						</section>
 					</div>

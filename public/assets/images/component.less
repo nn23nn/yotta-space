@@ -1,0 +1,217 @@
+@import "less";
+.star{
+    width:10px;
+    height:10px;
+    background:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%2210%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%3E%3Cpath%20fill%3D%22%23FFC120%22%20d%3D%22M9%200l2.5%206.8h6.5l-5.4%204.2%202%207-5.6-4.3-5.6%204.3%202-7-5.4-4.2h6.5z%22%2F%3E%3C%2Fsvg%3E");
+}
+.star-rate{
+    background:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%2210%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%2235%2035%2018%2018%22%20enable-background%3D%22new%2035%2035%2018%2018%22%3E%3Cpath%20fill%3D%22%23FFC120%22%20d%3D%22M44%2048.8l-5.6%204.2%201.9-7.1-5.3-4h6.6l2.4-6.9%22%2F%3E%3Cpath%20fill%3D%22%23CBCACA%22%20d%3D%22M44%2035l2.4%206.9h6.6l-5.3%204%201.9%207.1-5.6-4.2%22%2F%3E%3C%2Fsvg%3E");
+}
+.star-empty{
+    background:url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%2210%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2018%2018%22%20enable-background%3D%22new%200%200%2018%2018%22%3E%3Cpath%20fill%3D%22%23CBCACA%22%20d%3D%22M9%200l2.4%206.9h6.6l-5.3%204%201.9%207.1-5.6-4.2-5.6%204.2%201.9-7.1-5.3-4h6.6l2.4-6.9%22%2F%3E%3C%2Fsvg%3E");
+}
+.self-dropdown{
+    position:relative;
+    .dropdown-tigger{
+        color:white;
+        cursor:pointer;
+        position:relative;
+        &:after{
+            content:"";
+            position:relative;
+            display:inline-block;
+            .triangle(bottom,4px);
+            margin-left:3px;
+            top:4px;
+            .transition(transform);
+            transform-origin:center 2px;
+        }
+        &:hover{
+            &:after{
+                transform:rotate(-180deg);
+            }
+        }
+    }
+    .dropdown-popover{
+        background:white;
+        position:absolute;
+        display:none;
+        z-index:9;
+        left:50%;
+        top:100%;
+        margin-top:10px;
+        .translate(-50%,0);
+        box-shadow:0 1px 5px 1px #dddddd;
+        border-radius:2px;
+        padding:15px 25px;
+        .transition(opacity);
+        opacity:0;
+        &:before{
+            content:"";
+            position:absolute;
+            width:0;
+            height:0;
+            .triangle(top,10px,#fff);
+            left:50%;
+            top:0%;
+            .translate(-50%,-100%);
+        }
+    }
+    &:hover{
+        .dropdown-popover{
+            display:block;
+            opacity:1;
+        }
+    }
+}
+.carousel-container{
+    position:relative;
+    .prev,.next{
+        display:none;
+        position:absolute;
+        top:50%;
+        .translate(0,-50%);
+        z-index:2;
+        @media screen{
+            @media (max-width:760px){
+                display:none !important;
+            }
+        }
+    }
+    .prev{
+        left:15px;
+    }
+    .next{
+        right:15px;
+    }
+    &:hover{
+        .prev,.next{
+            display:block;
+        }
+    }
+}
+.owl-controls .owl-page span{
+    height:10px !important;
+    width:10px !important;
+    margin:0!important;
+    @media screen{
+        @media (max-width:760px){
+            height:8px !important;
+            width:8px !important;
+        }
+    }
+    border-radius:50% !important;
+}
+.carousel-container{
+    padding-bottom:30px;
+    .owl-controls{
+        position:absolute;
+        margin-top:0;
+        top:100%;
+        left:50%;
+        margin-top:9px !important;
+        .translate(-50%,0);
+        .owl-page{
+            margin-left:10px;
+            &:first-of-type{
+                margin-left:0;
+            }
+        }
+    }
+}
+.products-owl{
+    .module-header{
+        line-height:45px;
+        padding:0 40px;
+    }
+    .module-name{
+        font-size:1.8rem;
+        color:#000;
+        font-weight:bold;
+    }
+    .product-item{
+        border-radius:6px;
+        background:white;
+        padding:12px;
+        height:300px;
+        .product-pic{
+            display:block;
+            width:144px;
+            margin:auto;
+        }
+        .product-price{
+            margin-top:6px;
+            height:35px;
+            overflow:hidden;
+            ._product-price{
+                font-weight:bold;
+                font-size:1.8rem;
+                color:@blue;
+                em{
+                    font-size:1rem;
+                    font-style:normal;
+                    position:relative;
+                    vertical-align:top;
+                    //font-weight:bold;
+                }
+            }
+            .save-price{
+                font-size:0.9rem;
+                color:#e30202;
+                //font-weight:bold;
+                span{
+                    font-size:1.2rem;
+                    margin-left:3px;
+                }
+            }
+        }
+        .product-main{
+            margin-top:5px;
+        }
+        .prodcut-desc{
+            font-size:1.2rem;
+        }
+        .star-evaluate{
+            margin-top:6px;
+            height:10px;
+            .star{
+                float:left;
+                margin-left:5px;
+                &:first-of-type{
+                    margin-left:0;
+                }
+            }
+            .stars{
+                overflow:hidden;
+                float:left;
+            }
+            .stars-reviews{
+                float:left;
+                font-size:0.8rem;
+                position:relative;
+                top:-1px;
+                margin-left:3px;
+                color:@blue;
+            }
+        }
+        .product-shipping{
+            color:#3e7f19;
+            font-style:italic;
+            font-size:1rem;
+            font-weight:bold;
+            margin-top:8px;
+        }
+        @media screen{
+            @media (max-width:760px){
+                border-radius:3px;
+            }
+        }
+    }
+    .owl-item{
+        margin-left:15px;
+        &:first-of-type{
+            margin-left:0;
+        }
+    }
+}
+

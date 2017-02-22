@@ -36,6 +36,16 @@
 										<form class="form-horizontal" role="form" id="formView" action="/admin/system/user/save" method="post">
 											{!! csrf_field() !!}
 											<input type="hidden" name="id" value="{{ $data['user']->id }}"/>
+											@if(!empty($errors->all()))
+												<div class="alert alert-danger">
+													<button data-dismiss="alert" class="close" type="button">
+														<i class="ace-icon fa fa-times"></i>
+													</button>
+													@foreach($errors->all() as $error)
+														{{ $error }} <br>
+													@endforeach
+												</div>
+											@endif 
 											<div class="alert alert-warning">
 												<button data-dismiss="alert" class="close" type="button">
 													<i class="ace-icon fa fa-times"></i>
@@ -78,10 +88,10 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-3 control-label">角色选择</label>
 	                                            <div class="col-sm-9">
-	                                                <select class="form-control">
+	                                                <select class="form-control"   name="role_id">
 	                                                	<option value="">请选择角色</option>
 														@foreach($data['roles'] as $role)
-														<option value="{{ $role->id }}" @if($role->selected) selected="selected" @endif>{{ $role->display_name }}</option>
+														<option value="{{ $role->id }}" @if($role->selected) selected="selected" @endif>{{ $role->name }}</option>
 														@endforeach
 	                                                </select>
 	                                            </div>

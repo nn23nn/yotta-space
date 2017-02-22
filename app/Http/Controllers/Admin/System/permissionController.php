@@ -25,25 +25,19 @@ class PermissionController extends Controller
 
     public function permissionList(PermissionGroupConfig $permissionGroupConfig)
     {
-
-        $data['permissions'] = $this->permissionService->getPermissionListByGroupId($permissionGroupConfig->id);
-        $json['content']     = (string) view('admin.system.permission.permissionList', $data);
-        return response()->json($json);
-        //return view('permission.permissionList', $data);
+        $permissions = $this->permissionService->getPermissionListByGroupId($permissionGroupConfig->id);
+        return view('admin.system.permission.permissionList', compact('permissions'));
     }
 
     public function createGroupConfig()
     {
-        $json['content'] = (string) view('admin.system.permission.addGroupConfig');
-        return response()->json($json);
+        return view('admin.system.permission.addGroupConfig');
     }
 
     public function createPermission()
     {
-        $data['groupList'] = $this->permissionService->getAllGroup();
-
-        $json['content'] = (string) view('admin.system.permission.addPermission', $data);
-        return response()->json($json);
+        $groupList = $this->permissionService->getAllGroup();
+        return view('admin.system.permission.addPermission', compact('groupList'));
     }
 
     public function editPermission(Permission $permission)
@@ -51,41 +45,39 @@ class PermissionController extends Controller
         $data['groupPermission'] = $this->permissionService->getPermissionGroup($permission->id);
         $data['groupList']       = $this->permissionService->getAllGroup();
         $data['permission']      = $permission;
-
-        $json['content'] = (string) view('admin.system.permission.editPermission', $data);
-        return response()->json($json);
+        return view('admin.system.permission.editPermission', compact('data'));
     }
 
     public function editGroupConfig(PermissionGroupConfig $permission)
     {
-
-        $json['content'] = (string) view('admin.system.permission.editGroupConfig', ['permission' => $permission]);
-        return response()->json($json);
+        return view('admin.system.permission.editGroupConfig', compact('permission'));
     }
 
     public function saveGroupConfig(PermissionGroupConfigRequest $request)
     {
         $permission = $this->permissionService->saveGroupConfig($request);
-        return response()->json($permission);
+        $data   = ['success' => $permission ? true : false, 'msg' => $permission ? '添加成功' : '添加失败'];        
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/permission']);
     }
 
     public function savePermission(PermissionRequest $request)
     {
         $permission = $this->permissionService->savePermission($request);
-        return response()->json($permission);
+        $data   = ['success' => $permission ? true : false, 'msg' => $permission ? '添加成功' : '添加失败'];        
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/permission']);
     }
 
-    public function destoryGroupConfig()
+    public function destoryGroupConfig($id)
     {
-        $result = $this->permissionService->destoryGroupConfig();
-        $data   = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];
-        return response()->json($data);
+        $result = $this->permissionService->destoryGroupConfig($id);
+        $data   = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];        
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/permission']);
     }
 
-    public function destoryPermission()
+    public function destoryPermission($id)
     {
-        $result = $this->permissionService->destoryPermission();
-        $data   = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];
-        return response()->json($data);
+        $result = $this->permissionService->destoryPermission($id);
+        $data = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/permission']);
     }
 }

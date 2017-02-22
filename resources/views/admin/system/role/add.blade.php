@@ -35,20 +35,27 @@
 									<div class="col-md-10">
 										<form class="form-horizontal center" id="formView" action="/admin/system/role/save" method="post">
 											{!! csrf_field() !!}
-											<div class="alert alert-danger hide">
-												<button data-dismiss="alert" class="close" type="button">
-													<i class="ace-icon fa fa-times"></i>
-												</button>
-												<span id="errormsg"></span>
-												<br>
-											</div>
-	                                        <div class="form-group">
+											@if(!empty($errors->all()))
+												<div class="alert alert-danger">
+													<button data-dismiss="alert" class="close" type="button">
+														<i class="ace-icon fa fa-times"></i>
+													</button>
+													@foreach($errors->all() as $error)
+														{{ $error }} <br>
+													@endforeach
+												</div>
+											@endif	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">角色名</label>
 	                                            <div class="col-sm-6">
-	                                                <input type="text" class="form-control" placeholder="角色名称" id="display_name" name="display_name" datatype="s4-18" errormsg="显示名称至少4个字符，最多18个字符！" nullmsg="请输入角色名称！"/>
-	                                                <p class="help-block mb-0">Example block-level help text here.</p>
+	                                                <input type="text" class="form-control" placeholder="角色名称" id="name" name="name" datatype="s4-18" errormsg="显示名称至少4个字符，最多18个字符！" nullmsg="请输入角色名称！"/>
 	                                            </div>
-	                                        </div>
+	                                        </div><!-- 
+											<div class="form-group">
+												<label class="col-sm-2 control-label">描述</label>
+												<div class="col-sm-8">
+													<textarea class="form-control" placeholder="描述" id="description" name="description"></textarea>
+												</div>
+											</div> -->
 	                                        <div class="form-group">
 	                                        	@foreach ($groupList as $group)
 	                                        	<label class="col-sm-2 control-label">{{ $group->name }}</label>

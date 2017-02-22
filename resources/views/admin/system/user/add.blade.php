@@ -35,18 +35,20 @@
 									<div class="col-md-6">
 										<form class="form-horizontal" action="/admin/system/user/save" method="post">
 											{!! csrf_field() !!}
-											<div class="alert alert-danger hide">
-												<button data-dismiss="alert" class="close" type="button">
-													<i class="ace-icon fa fa-times"></i>
-												</button>
-												<span id="errormsg"></span>
-												<br>
-											</div>
+											@if(!empty($errors->all()))
+												<div class="alert alert-danger">
+													<button data-dismiss="alert" class="close" type="button">
+														<i class="ace-icon fa fa-times"></i>
+													</button>
+													@foreach($errors->all() as $error)
+														{{ $error }} <br>
+													@endforeach
+												</div>
+											@endif
 	                                        <div class="form-group">
 	                                            <label class="col-sm-3 control-label">用户名</label>
 	                                            <div class="col-sm-9">
 	                                                <input type="text" class="form-control" placeholder="昵称" id="name" name="name" datatype="s4-18" errormsg="昵称至少4个字符，最多18个字符！" nullmsg="请输入昵称！"/>
-	                                                <p class="help-block mb-0">Example block-level help text here.</p>
 	                                            </div>
 	                                        </div>
 	                                        <div class="form-group">
@@ -70,10 +72,10 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-3 control-label">角色选择</label>
 	                                            <div class="col-sm-9">
-	                                                <select class="form-control">
+	                                                <select class="form-control"  name="role_id">
 	                                                	<option value="">请选择角色</option>
 														@foreach($roles as $role)
-														<option value="{{ $role->id }}">{{ $role->display_name }}</option>
+														<option value="{{ $role->id }}">{{ $role->name }}</option>
 														@endforeach
 	                                                </select>
 	                                            </div>

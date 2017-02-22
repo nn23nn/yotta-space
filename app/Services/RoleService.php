@@ -41,9 +41,9 @@ class RoleService extends BaseService
         return Role::find((int) $id);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        $ids = Request::input('ids', 0);
+        $ids = Request::input('ids', $id);
         return $ids && Role::destroy($ids);
     }
 

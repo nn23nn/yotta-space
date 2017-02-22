@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
  */
-
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', ['middleware' => 'alog', 'uses' => 'Auth\AuthController@postLogin']);
 Route::get('/logout', 'Auth\AuthController@getLogout');
@@ -21,6 +20,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
     Route::get('/', 'IndexController@index');
     Route::get('/home', 'IndexController@home');
+    Route::get('/message', 'IndexController@message');
+
     Route::group(['prefix' => 'system', 'namespace' => 'System'], function () {
         Route::group(['prefix' => 'user'], function () {
             Route::get('/', ['as' => 'user.list', 'uses' => 'UserController@index', 'middleware' => ['permission:LIST_ADMIN']]);
@@ -32,28 +33,28 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         });
 
         Route::group(['prefix' => 'permission'], function () {
-            Route::get('/', ['as' => 'permission.list', 'uses' => 'PermissionController@index', 'middleware' => ['permission:LIST_PERMISSION']]);
+            Route::get('/', ['as' => 'permission.list', 'uses' => 'PermissionController@index']);
 
-            Route::post('/saveGroupConfig', ['as' => 'permission.saveGroupConfig', 'uses' => 'PermissionController@saveGroupConfig', 'middleware' => ['permission:UP_PERM_GROUP']]);
-            Route::get('/destoryGroupConfig/{id}', ['as' => 'permission.destoryGroupConfig', 'uses' => 'PermissionController@destoryGroupConfig', 'middleware' => ['permission:DEL_PERM_GROUP']]);
-            Route::get('/createGroupConfig', ['as' => 'permission.createGroupConfig', 'uses' => 'PermissionController@createGroupConfig', 'middleware' => ['permission:ADD_PERM_GROUP']]);
-            Route::get('/editGroupConfig/{permissionGroupConfig}', ['as' => 'permission.editGroupConfig', 'uses' => 'PermissionController@editGroupConfig', 'middleware' => ['permission:UP_PERM_GROUP']]);
+            Route::post('/saveGroupConfig', ['as' => 'permission.saveGroupConfig', 'uses' => 'PermissionController@saveGroupConfig']);
+            Route::get('/destoryGroupConfig/{id}', ['as' => 'permission.destoryGroupConfig', 'uses' => 'PermissionController@destoryGroupConfig']);
+            Route::get('/createGroupConfig', ['as' => 'permission.createGroupConfig', 'uses' => 'PermissionController@createGroupConfig']);
+            Route::get('/editGroupConfig/{permissionGroupConfig}', ['as' => 'permission.editGroupConfig', 'uses' => 'PermissionController@editGroupConfig']);
 
-            Route::get('/permissionList/{permissionGroupConfig}', ['as' => 'permission.permissionList', 'uses' => 'PermissionController@permissionList', 'middleware' => ['permission:LIST_PERMISSION']]);
-            Route::get('/editPermission/{permission}', ['as' => 'permission.editPermission', 'uses' => 'PermissionController@editPermission', 'middleware' => ['permission:UP_PERMISSION']]);
-            Route::get('/createPermission', ['as' => 'permission.createPermission', 'uses' => 'PermissionController@createPermission', 'middleware' => ['permission:ADD_PERMISSION']]);
-            Route::post('/savePermission', ['as' => 'permission.savePermission', 'uses' => 'PermissionController@savePermission', 'middleware' => ['permission:UP_PERMISSION']]);
-            Route::post('/destoryPermission', ['as' => 'permission.destoryPermission', 'uses' => 'PermissionController@destoryPermission', 'middleware' => ['permission:DEL_PERMISSION']]);
+            Route::get('/permissionList/{permissionGroupConfig}', ['as' => 'permission.permissionList', 'uses' => 'PermissionController@permissionList']);
+            Route::get('/editPermission/{permission}', ['as' => 'permission.editPermission', 'uses' => 'PermissionController@editPermission']);
+            Route::get('/createPermission', ['as' => 'permission.createPermission', 'uses' => 'PermissionController@createPermission']);
+            Route::post('/savePermission', ['as' => 'permission.savePermission', 'uses' => 'PermissionController@savePermission']);
+            Route::get('/destoryPermission/{id}', ['as' => 'permission.destoryPermission', 'uses' => 'PermissionController@destoryPermission']);
         });
 
         Route::group(['prefix' => 'role'], function () {
-            Route::get('/', ['as' => 'role.list', 'uses' => 'RoleController@index', 'middleware' => ['permission:LIST_ROLE']]);
-            Route::post('/save', ['as' => 'role.save', 'uses' => 'RoleController@save', 'middleware' => ['permission:UP_ROLE']]);
-            Route::get('/destroy/{id}', ['as' => 'role.destroy', 'uses' => 'RoleController@destroy', 'middleware' => ['permission:DEL_ROLE']]);
-            Route::get('/edit/{role}', ['as' => 'role.edit', 'uses' => 'RoleController@edit', 'middleware' => ['permission:UP_ROLE']]);
-            Route::get('/create', ['as' => 'role.create', 'uses' => 'RoleController@create', 'middleware' => ['permission:ADD_ROLE']]);
-            Route::get('/userList/{role}', ['as' => 'role.userList', 'uses' => 'RoleController@userList', 'middleware' => ['permission:VIEW_USER_ROLE']]);
-            Route::post('/destoryUser/{role}', ['as' => 'role.destoryUser', 'uses' => 'RoleController@destoryUser', 'middleware' => ['permission:DEL_USER_ROLE']]);
+            Route::get('/', ['as' => 'role.list', 'uses' => 'RoleController@index']);
+            Route::post('/save', ['as' => 'role.save', 'uses' => 'RoleController@save']);
+            Route::get('/destroy/{id}', ['as' => 'role.destroy', 'uses' => 'RoleController@destroy']);
+            Route::get('/edit/{role}', ['as' => 'role.edit', 'uses' => 'RoleController@edit']);
+            Route::get('/create', ['as' => 'role.create', 'uses' => 'RoleController@create']);
+            Route::get('/userList/{role}', ['as' => 'role.userList', 'uses' => 'RoleController@userList']);
+            Route::post('/destoryUser/{role}', ['as' => 'role.destoryUser', 'uses' => 'RoleController@destoryUser']);
         });
     });
     Route::group(['prefix' => 'category'], function () {
@@ -66,3 +67,23 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         Route::get('/treedata', ['as' => 'category.tree', 'uses' => 'CategoryController@treedata', 'middleware' => ['permission:LIST_CATEGORY']]);
     });
 });
+    Route::get('/', ['uses' => 'Index\IndexController@index']);
+    Route::get('index', ['uses' => 'Index\IndexController@index']);
+    Route::group(['prefix' => 'index'], function () {
+
+    Route::get('index', ['uses' => 'Index\IndexController@index']);
+    Route::get('about', ['uses' => 'Index\IndexController@about']);
+    Route::get('course', ['uses' => 'Index\IndexController@course']);
+    Route::get('activity', ['uses' => 'Index\IndexController@activity']);
+    Route::get('contact', ['uses' => 'Index\IndexController@contact']);
+    Route::get('login', ['uses' => 'Index\IndexController@login']);
+    Route::post('loginEnter', ['uses' => 'Index\IndexController@loginEnter']);
+    Route::get('register', ['uses' => 'Index\IndexController@register']);
+    Route::post('registerEnter', ['uses' => 'Index\IndexController@registerEnter']);
+    Route::post('sendCode', ['uses' => 'Index\IndexController@sendCode']);
+    Route::get('getback', ['uses' => 'Index\IndexController@getback']);
+    Route::post('updatePassword', ['uses' => 'Index\IndexController@updatePassword']);
+     Route::post('loginout', ['uses' => 'Index\IndexController@loginout']);
+      Route::get('userCenter', ['uses' => 'Index\IndexController@userCenter']);
+
+    });

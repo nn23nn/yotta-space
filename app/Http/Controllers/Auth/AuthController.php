@@ -68,17 +68,6 @@ class AuthController extends Controller {
 		$result = $request->all();
 		$arr['email'] = $result['email'];
 		$arr['password'] = $result['password'];
-		$captcha = $result['captcha'];
-		//$logfailService  = new LogfailService;
-		$milkcaptcha = Session::get('milkcaptcha');
-
-		$ip = \Request::ip();
-		// if ($logfailService->getFailIp($ip)) {
-		//     return redirect::to('/login')->withErrors('该IP失败次数过多，请第二天重试');
-		// }
-		// if ($captcha !== $milkcaptcha) {
-		//     return redirect::to('/login')->withErrors('验证码错误');
-		// }
 
 		if (Auth::attempt($arr, $request->has('remember'))) {
 			// $logfailService->setIpLogFail($ip, true);

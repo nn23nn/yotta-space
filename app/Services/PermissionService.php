@@ -44,9 +44,9 @@ class PermissionService extends BaseService
         return $this->permissionGroupConfig->getGroupConfigById((int) $id);
     }
 
-    public function destoryGroupConfig()
+    public function destoryGroupConfig($id)
     {
-        $ids      = Request::input('ids', 0);
+        $ids      = Request::input('ids', $id);
         $groupIds = is_array($ids) ? $ids : array($ids);
 
         //删除分组对应的权限
@@ -63,9 +63,9 @@ class PermissionService extends BaseService
         return $ids && $this->permissionGroupConfig->destroy($ids);
     }
 
-    public function destoryPermission()
+    public function destoryPermission($id)
     {
-        $ids            = Request::input('ids', 0);
+        $ids            = Request::input('ids', $id);
         $permission_ids = is_array($ids) ? $ids : array($ids);
 
         //删除原有的对应关系

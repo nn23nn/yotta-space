@@ -65,8 +65,9 @@
 												<td>{{ $group->updated_at }}</td>
 	                                            <td class="actions">
 	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/permission/createPermission">添加权限</a>
-	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/permission/permissionList/{{ $group->id }}">编辑权限分组</a>
-	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/permission/destoryGroupConfig/{{$group->id}}">删除权限分组</a>
+	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/permission/permissionList/{{ $group->id }}">查看权限</a>
+	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/permission/editGroupConfig/{{ $group->id }}">编辑权限分组</a>
+	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/permission/destoryGroupConfig/{{$group->id}}" onclick="confirm('确定要删除吗?')">删除权限分组</a>
 	                                            </td>
 	                                        </tr>
 	                                        @endforeach

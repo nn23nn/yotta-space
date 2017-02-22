@@ -27,7 +27,7 @@ class UserRequest extends Request
         $userId       = $this->input('id', 0);
         $nameRule     = $userId ? 'required|min:4|max:18|unique:users,name,' . $userId : 'required|min:4|max:18|unique:users,name';
         $emailRule    = $userId ? 'required|email|unique:users,email,' . $userId : 'required|email|unique:users,email';
-        $passwordRule = $userId ? 'required|regex:/^(?![^a-zA-Z]+$)(?!\D+$).{8,15}$/|between:8,16' : 'required|regex:/^^(?![^a-zA-Z]+$)(?!\D+$).{8,15}$/|between:8,16';
+        $passwordRule = $userId ? 'regex:/^(?![^a-zA-Z]+$)(?!\D+$).{8,15}$/|between:8,16' : 'required|regex:/^^(?![^a-zA-Z]+$)(?!\D+$).{8,15}$/|between:8,16';
         return [
             'name'       => $nameRule,
             'email'      => $emailRule,

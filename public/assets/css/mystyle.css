@@ -1,0 +1,153 @@
+.teacher-item .teacher-infos .teacher-name {
+	font-size: 20px;
+}
+
+.fixed-header #site-nav li a {
+	color: black;
+}
+
+#contact-items .weibos .weibo-item {
+	width: 60px;
+}
+
+#site-logo-div {
+	position: absolute;
+	left: 80px;
+	top: 10px;
+}
+
+@media screen and (max-width: 760px) {
+	#site-logo-div {
+		position: absolute;
+		left: 30px;
+		top: 20px;
+	}
+}
+
+#contact-items .email-tel li:nth-last-child(2) {
+	margin-top: 10px;
+}
+
+#contact-items .weibos .weibo-item {
+	margin-right: 15px;
+}
+
+#best-course-section .pc-course-select li {
+	text-align: left;
+	padding-left: 30px;
+}
+
+#best-activity .best-activity-others .best-activity-other .act-infos div {
+	margin-top: 7px;
+}
+
+.act-infos h5 {
+	font-weight: bold;
+}
+
+.inner-map {
+	line-height: 50px;
+}
+
+.inner-filter-nav {
+	width: auto;
+	margin-top: 0;
+}
+
+.inner-filter-nav li {
+	width: 90px;
+	line-height: 40px;
+}
+
+.iconfont {
+	font-size: 14px;
+	margin-right: 6px;
+    color: #ffc722;
+}
+
+ .theacher-desc {
+ 	margin-bottom: 10px;
+ }
+
+ .number {
+ 	margin-right: 30px;
+ }
+
+/*.inner-body .inner-left .inner-item .text {
+	position: relative;
+	width: auto;
+	right: auto;
+	top: 0;
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
+}*/
+
+.inner-item {
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-top: 0!important;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.inner-body .inner-left .inner-item .data-items .data-item.data-location {
+	top: 15px;
+}
+
+.inner-body .inner-left .inner-item .data-items .data-item.data-persons {
+	bottom: 15px;
+}
+
+.inner-body .inner-left .inner-item .text .theacher-name {
+	font-size: 24px;
+}
+
+.inner-body .inner-left .inner-item .text .theacher-title {
+	margin-top: 20px;
+}
+
+.about-section-title span {
+	margin-left: 0;
+}
+
+.about-section2 .about-section2-top .join-us {
+	float: right;
+}
+
+.inner-body .inner-left .inner-item .text {
+	right: -20%;
+	width: 85%;
+}
+
+.reply-primary-item .reply-primary-body {
+	width: 100%;
+}
+
+.reply-primary-item .primary-user-header {
+	width: 20px;
+	height: 20px;
+	left: 25px
+}
+
+.reply-primary-item .primary-user-date {
+	float: right;
+	margin-right: 25px;
+}
+
+.reply-primary-item .primary-reply-content {
+	margin-top: 10px;
+	margin-left: 25px;
+}
+
+.reply-primary-item {
+	border-bottom: 1px solid #ccc;
+	border-top: 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,.07);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: -1px;
+
+}
+
+.m-t-20 {
+	
+}

@@ -26,16 +26,6 @@ class UserController extends Controller
         return view('admin.system.user.list', compact('users'));
     }
 
-    public function getJQTableData()
-    {
-        echo json_encode($this->userService->getJQTableData());
-    }
-
-    public function getJQGridData()
-    {
-        echo json_encode($this->userService->getJQGridData());
-    }
-
     public function create()
     {
         $roles = Role::all();
@@ -55,20 +45,16 @@ class UserController extends Controller
     }
 
     public function save(UserRequest $request)
-    {print_r($request->all());exit;
+    {
         $user = $this->userService->save($request);
-        return response()->json($user);
+        $data = ['success' => $user ? true : false, 'msg' => $user ? '添加成功' : '添加失败'];
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/user']);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        $result = $this->userService->destroy();
+        $result = $this->userService->destroy($id);
         $data = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];
-        return response()->json($data);
-    }
-
-    public function menu()
-    {
-        return view('admin.system.user.sidebar');
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/user']);
     }
 }

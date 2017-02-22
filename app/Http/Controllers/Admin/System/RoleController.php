@@ -51,14 +51,15 @@ class RoleController extends Controller
     public function save(RoleRequest $request)
     {
         $role = $this->roleService->save($request);
-        return response()->json($role);
+        $data = ['success' => $role ? true:false, 'msg' => $role ? '保存成功' : '保存失败'];
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/role']);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        $result = $this->roleService->destroy();
+        $result = $this->roleService->destroy($id);
         $data = ['success' => $result, 'msg' => $result ? '删除成功' : '删除失败'];
-        return response()->json($data);
+        return view('admin.message', ['data' => $data , 'redirect_url' => '/admin/system/role']);
     }
     
     public function destoryUser(Role $role)

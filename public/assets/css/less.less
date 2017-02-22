@@ -1,0 +1,21 @@
+//变量
+@color-main:#333;
+@yellow:#ffc722;
+@color-4a:#4a4a4a;
+@color-68:#686868;
+@color-e3:#e3e3e3;
+.transition(@item:transform,@time:.5s){
+    transition:@item @time;
+    -webkit-transition:@item @time;
+    -moz-transition:@item @time;
+    -ms-transition:@item @time;
+    -o-transition:@item @time;
+}
+.translate(@x:0px,@y:0px){
+    transform:translate(@x,@y);
+    -webkit-transform:translate(@x,@y);
+    -webkit-transform:translate(@x,@y);
+    -moz-transform:translate(@x,@y);
+    -ms-transform:translate(@x,@y);
+    -o-transform:translate(@x,@y);
+}

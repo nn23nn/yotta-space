@@ -67,7 +67,7 @@
 												<td>{{ $role->updated_at }}</td>
 												<td class="actions">
 	                                            	<a role="button" tabindex="0" class="text-uppercase text-strong text-sm mr-10" href="/admin/system/role/edit/{{$role->id}}">更改</a>
-	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/role/destroy/{{$role->id}}">删除</a>
+	                                            	<a role="button" tabindex="0" class="text-danger text-uppercase text-strong text-sm" href="/admin/system/role/destroy/{{$role->id}}"  onclick="if(!confirm('确定要删除吗?')){return false;}">删除</a>
 	                                            </td>
 	                                        </tr>
 	                                        @endforeach

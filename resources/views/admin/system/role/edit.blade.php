@@ -35,18 +35,21 @@
 									<div class="col-md-10">
 										<form class="form-horizontal center" id="formView" action="/admin/system/role/save" method="post">
 											{!! csrf_field() !!}
-											<div class="alert alert-danger hide">
-												<button data-dismiss="alert" class="close" type="button">
-													<i class="ace-icon fa fa-times"></i>
-												</button>
-												<span id="errormsg"></span>
-												<br>
+											<input type="hidden" name="id" value="{{ $data['role']->id }}"/>
+											@if(!empty($errors->all()))
+											<div class="alert alert-danger">
+													<button data-dismiss="alert" class="close" type="button">
+														<i class="ace-icon fa fa-times"></i>
+													</button>
+													@foreach($errors->all() as $error)
+														{{ $error }} <br>
+													@endforeach
 											</div>
+											@endif
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">角色名</label>
 	                                            <div class="col-sm-6">
-	                                                <input type="text" class="form-control" placeholder="角色名称" id="display_name" name="display_name" datatype="s4-18" errormsg="显示名称至少4个字符，最多18个字符！" nullmsg="请输入角色名称！"  value="{{ $data['role']->name }}"/>
-	                                                <p class="help-block mb-0">Example block-level help text here.</p>
+	                                                <input type="text" class="form-control" placeholder="角色名称" id="name" name="name" datatype="s4-18" errormsg="显示名称至少4个字符，最多18个字符！" nullmsg="请输入角色名称！"  value="{{ $data['role']->name }}"/>
 	                                            </div>
 	                                        </div>
 	                                        <div class="form-group">

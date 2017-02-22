@@ -49,6 +49,7 @@ class PermissionRequest extends Request
             'name.unique' => '权限名称已存在',
             'display_name.required' => '请填写权限描述',
             'display_name.unique' => '权限描述已存在',
+            'group_id.required' => '请选择权限分组',
         	
         ];
     }
