@@ -66,6 +66,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         Route::get('/treeview', ['as' => 'category.tree', 'uses' => 'CategoryController@treeview', 'middleware' => ['permission:LIST_CATEGORY']]);
         Route::get('/treedata', ['as' => 'category.tree', 'uses' => 'CategoryController@treedata', 'middleware' => ['permission:LIST_CATEGORY']]);
     });
+    Route::group(['prefix' => 'member'], function () {
+        Route::get('/', ['as' => 'member.list', 'uses' => 'MemberController@index']);
+        Route::post('/save', ['as' => 'member.save', 'uses' => 'MemberController@save']);
+        Route::post('/destroy', ['as' => 'member.destroy', 'uses' => 'MemberController@destroy']);
+        Route::get('/edit/{member}', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
+        Route::get('/create', ['as' => 'member.create', 'uses' => 'MemberController@create']);
+    });
 });
     Route::get('/', ['uses' => 'Index\IndexController@index']);
     Route::get('index', ['uses' => 'Index\IndexController@index']);

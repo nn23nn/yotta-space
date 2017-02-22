@@ -156,12 +156,12 @@
                       "sub_menu" => array(
                         array(
                           "text" => "会员列表",
-                          "url" => "",
+                          "url" => "/admin/member",
                           "sub_menu" => array()
                         ),
                         array(
                           "text" => "添加会员",
-                          "url" => "",
+                          "url" => "/admin/member/create",
                           "sub_menu" => array()
                         ),
                         array(

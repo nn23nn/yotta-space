@@ -25,9 +25,9 @@ class MemberRequest extends Request
     public function rules()
     {
         $userId = $this->input('userid', 0);
-        $nickname = $userId ? 'required|min:4|max:18,name,' . $userId : 'required|min:4|max:18|unique:users,name';
+        $username = $userId ? 'required|min:4|max:18,name,' . $userId : 'required|min:4|max:18|unique:users,name';
         return [
-            'nickname' => $nickname,
+            'username' => $username,
         ];
     }
 
@@ -39,9 +39,9 @@ class MemberRequest extends Request
     public function messages()
     {
         return [
-            'nickname.required' => '请填写昵称',
-            'nickname.max' => '昵称过长，请不要超出18个字符',
-            'nickname.min' => '昵称过短，至少4个字符',
+            'username.required' => '请填写昵称',
+            'username.max' => '昵称过长，请不要超出18个字符',
+            'username.min' => '昵称过短，至少4个字符',
         ];
     }
 
